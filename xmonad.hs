@@ -8,10 +8,11 @@ import XMonad.Util.EZConfig(additionalKeys)
 import System.IO
 
 -- Set up workspace
-myWorkspaces = ["1:main", "2:web", "3:code", "4:testing", "5", "6", "7", "8:email"]
+myWorkspaces = ["1:main", "2:web", "3:code", "4:testing", "5", "6", "7:email", "8:zotero"]
 myManageHook = composeAll 
-    [ className =? "thunderbird" --> doShift "8:email"
+    [ className =? "thunderbird" --> doShift "7:email"
     , className =? "firefox" --> doShift "2:web"
+    , className =? "zotero" --> doShift "8:zotero"
     ]
 
 main = do
@@ -30,6 +31,7 @@ main = do
       , normalBorderColor = "#d1d1d1"
       , focusedBorderColor = "#75e468"
       , workspaces = myWorkspaces
+      , terminal = "urxvt"
     } `additionalKeys` 
         [ -- Volume mute key
 	      ((0, 0x1008FF12), spawn "amixer set Master toggle")
