@@ -16,7 +16,7 @@ myManageHook = composeAll
 
 main = do
     -- Spawn the status bar at the top of the screen using the xmobarrc in this directory
-    xmproc <- spawnPipe "/usr/bin/xmobar /home/mkononen/.xmonad/xmobarrc" 
+    xmproc <- spawnPipe "/usr/bin/xmobar /home/mkononen/.xmonad/xmobar.hs" 
     
     xmonad $ defaultConfig {
         manageHook = myManageHook <+> manageDocks <+> manageHook defaultConfig 
