@@ -23,7 +23,7 @@ main = do
       , layoutHook = avoidStruts $ showWName (layoutHook defaultConfig)
       , logHook = dynamicLogWithPP xmobarPP
             { ppOutput = hPutStrLn xmproc
-            , ppTitle = xmobarColor "blue" "" . shorten 50
+            , ppTitle = xmobarColor "#657b83" "" . shorten 0
             , ppLayout = const ""
             }
       , borderWidth = 2
