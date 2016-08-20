@@ -49,5 +49,9 @@ main = do
           -- Let shift + volume keys control the brightness level 
         , ((1, 0x1008FF11), spawn "xbacklight -dec 20")
         , ((1, 0x1008FF13), spawn "xbacklight -inc 20")
+        , ((mod1Mask, xK_p), spawn "dmenu_run -fn \
+            \ \"xft:Roboto Regular:size=9:antialias=true\" \
+            \ -nb \"#000000\" -nf \"#657b83\" "
+          )
         ]
 
