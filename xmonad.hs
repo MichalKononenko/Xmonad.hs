@@ -30,10 +30,10 @@ tiled = Tall nmaster delta ratio
     -- Percent of screen to increment
     delta = 3/100
 
-fibonnaci_spiral = spiral(500/809)
+fibonacci_spiral = spiral(500/809)
 
 
-myLayout = fullscreen ||| tiled ||| fibonnaci_spiral
+myLayout = fullscreen ||| tiled ||| fibonacci_spiral
 
 main = do
     -- Spawn the status bar at the top of the screen using the xmobarrc in this directory
