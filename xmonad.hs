@@ -34,7 +34,7 @@ tiled = Tall nmaster delta ratio
 fibonacci_spiral = spiral(500/809)
 
 
-myLayout = fullscreen ||| tiled ||| fibonacci_spiral
+myLayout =  fibonacci_spiral ||| fullscreen ||| tiled
 
 main = do
     -- Spawn the status bar at the top of the screen using the xmobarrc in this directory
@@ -42,7 +42,8 @@ main = do
     
     xmonad $ defaultConfig {
         manageHook = myManageHook <+> manageDocks <+> manageHook defaultConfig 
-      , layoutHook = avoidStruts $ showWName  myLayout
+      , handleEventHook = docksEventHook <+> handleEventHook defaultConfig
+      , layoutHook = avoidStruts $ showWName myLayout
       , logHook = dynamicLogWithPP xmobarPP
             { ppOutput = hPutStrLn xmproc
             , ppTitle = xmobarColor "#657b83" "" . shorten 0
