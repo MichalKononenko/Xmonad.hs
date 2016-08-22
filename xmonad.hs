@@ -4,6 +4,7 @@ import XMonad.Layout.ShowWName
 import XMonad.Layout.Spiral
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
+import XMonad.Hooks.ManageHelpers
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.EZConfig(additionalKeys)
 import System.IO
@@ -11,9 +12,9 @@ import System.IO
 -- Set up workspace
 myWorkspaces = ["1:main", "2:web", "3:code", "4:testing", "5", "6", "7:email", "8:zotero"]
 myManageHook = composeAll 
-    [ className =? "thunderbird" --> doShift "7:email"
-    , className =? "firefox" --> doShift "2:web"
-    , className =? "zotero" --> doShift "8:zotero"
+    [ className =? "Arandr" --> doCenterFloat
+    , className =? "Thunderbird" --> doShift "7:email"
+    , className =? "Zotero" --> doShift "8:zotero"
     ]
 
 -- Define the tiling algorithm
