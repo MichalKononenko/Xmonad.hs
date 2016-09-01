@@ -54,6 +54,7 @@ main = do
       , focusedBorderColor = "#75e468"
       , workspaces = myWorkspaces
       , terminal = "urxvt"
+      , modMask = mod4Mask -- use Windows key instead of Alt
     } `additionalKeys` 
         [ -- Volume mute key
 	      ((0, 0x1008FF12), spawn "amixer set Master toggle")
