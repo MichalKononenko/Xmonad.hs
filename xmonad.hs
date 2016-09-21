@@ -74,10 +74,11 @@ main = do
         , ((1, 0x1008FF13), spawn "xbacklight -inc 20")
         
           -- Spawn the menu with appropriate parameters
-        , ((mod1Mask, xK_p), spawn "dmenu_run -fn \
+        , ((mod4Mask, xK_p), spawn "dmenu_run -fn \
             \ \"xft:Roboto Regular:size=9:antialias=true\" \
             \ -nb \"#000000\" -nf \"#657b83\" \
             \ -sb \"yellow\" -sf \"#000000\" "
           )
+        , ((mod4Mask, xK_f), spawn "firefox")
         ]
 
