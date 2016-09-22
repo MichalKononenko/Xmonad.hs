@@ -57,7 +57,7 @@ main = do
       , modMask = mod4Mask -- use Windows key instead of Alt
     } `additionalKeys` 
         [ -- Volume mute key
-	      ((0, 0x1008FF12), spawn "amixer set Master toggle")
+          ((0, 0x1008FF12), spawn "amixer set Master toggle; amixer set Speaker toggle")
           
           -- Volume control
         , ((0, 0x1008FF11), spawn "amixer set Master 2-")
