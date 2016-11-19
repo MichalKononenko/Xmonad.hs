@@ -5,6 +5,7 @@ import XMonad.Layout.Spiral
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.ManageHelpers
+import XMonad.Hooks.EwmhDesktops
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.EZConfig(additionalKeys)
 import System.IO
@@ -40,7 +41,7 @@ main = do
     -- Spawn the status bar at the top of the screen using the xmobarrc in this directory
     xmproc <- spawnPipe "/usr/bin/xmobar /home/mkononen/.xmonad/xmobar.hs" 
     
-    xmonad $ defaultConfig {
+    xmonad $ ewmh defaultConfig {
         manageHook = myManageHook <+> manageDocks <+> manageHook defaultConfig 
       , handleEventHook = docksEventHook <+> handleEventHook defaultConfig
       , layoutHook = avoidStruts $ showWName myLayout
