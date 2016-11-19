@@ -81,5 +81,6 @@ main = do
             \ -sb \"yellow\" -sf \"#000000\" "
           )
         , ((mod4Mask, xK_f), spawn "firefox")
+        , ((mod4Mask .|. shiftMask, xK_q), spawn "xfce4-session-logout")
         ]
 
