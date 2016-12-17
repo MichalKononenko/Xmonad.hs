@@ -1,5 +1,6 @@
 import XMonad
 import XMonad.Config.Xfce
+import XMonad.Hooks.ManageDocks
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.EZConfig(additionalKeys)
 import XMonad.Layout.ShowWName
@@ -33,7 +34,7 @@ main = do
     xmonad $ xfceConfig {
             terminal = "xfce4-terminal"
         ,   manageHook = myManageHook <+> manageHook xfceConfig
-        ,   layoutHook = showWName myLayout
+        ,   layoutHook = avoidStruts $ showWName myLayout
         ,   modMask  = mod4Mask
         ,   workspaces = myWorkspaces
         ,   borderWidth = 2
