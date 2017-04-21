@@ -1,10 +1,13 @@
 import XMonad
 import XMonad.Config.Xfce
 import XMonad.Hooks.ManageDocks
+import XMonad.Hooks.EwmhDesktops
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.EZConfig(additionalKeys)
 import XMonad.Layout.ShowWName
 import XMonad.Layout.Spiral
+import XMonad.Layout.Spacing
+import XMonad.Hooks.SetWMName
 import System.IO
 
 
@@ -17,7 +20,7 @@ myManageHook = composeAll
     ,   className =? "Zotero" --> doShift "8:zotero"
     ]
 
-tiled = Tall nmaster delta ratio
+tiled = spacing 20 $ Tall nmaster delta ratio
     where
     -- number of windows in the master pane
     nmaster = 1
@@ -26,12 +29,12 @@ tiled = Tall nmaster delta ratio
     -- Percent of screen to increment
     delta = 3/100
 
-fibonacci_spiral = spiral(500/809)
+fibonacci_spiral = spacing 20 $ spiral(500/809)
 
 myLayout = fibonacci_spiral ||| Full ||| tiled
 
 main = do
-    xmonad $ xfceConfig {
+    xmonad $ ewmh xfceConfig {
             terminal = "xfce4-terminal"
         ,   manageHook = myManageHook <+> manageHook xfceConfig
         ,   layoutHook = avoidStruts $ showWName myLayout
@@ -40,6 +43,8 @@ main = do
         ,   borderWidth = 2
         ,   normalBorderColor = "#d1d1d1"
         ,   focusedBorderColor = "#75e468"
+        ,   startupHook = setWMName "LG3D"
+        ,   handleEventHook = handleEventHook xfceConfig <+> fullscreenEventHook
     } `additionalKeys` 
         [
             -- Toggle switch for muting the microphone
