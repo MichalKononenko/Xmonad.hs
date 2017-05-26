@@ -7,6 +7,7 @@ import XMonad.Util.EZConfig(additionalKeys)
 import XMonad.Layout.ShowWName
 import XMonad.Layout.Spiral
 import XMonad.Layout.Spacing
+import XMonad.Layout.Tabbed
 import XMonad.Hooks.SetWMName
 import System.IO
 
@@ -18,9 +19,10 @@ myManageHook = composeAll
     [
         className =? "Thunderbird" --> doShift "7:email"
     ,   className =? "Zotero" --> doShift "8:zotero"
+    ,   title =? "Whisker Menu" --> doFloat
     ]
 
-tiled = spacing 20 $ Tall nmaster delta ratio
+tiled = spacing 20 (Tall nmaster delta ratio)
     where
     -- number of windows in the master pane
     nmaster = 1
@@ -29,7 +31,7 @@ tiled = spacing 20 $ Tall nmaster delta ratio
     -- Percent of screen to increment
     delta = 3/100
 
-fibonacci_spiral = spacing 20 $ spiral(500/809)
+fibonacci_spiral = spacing 10 $ spiral(500/809)
 
 myLayout = fibonacci_spiral ||| Full ||| tiled
 
